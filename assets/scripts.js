@@ -1,5 +1,4 @@
 var scheduleArray = new Array(8);
-console.log(scheduleArray);
 
 function getscheduleArray() {
     var scheduledEvent1 = localStorage.getItem("scheduleArray1");
@@ -33,24 +32,40 @@ function getscheduleArray() {
 }
 getscheduleArray();
 
-
-
-
 var printTime = setInterval(showDateTime, 1000);
-
-
 
 var saveButtonArea = $('.saveBtn');
 
+var hourArea = $('.hour');
+var hourAreaFinal = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+var hourOfDayFinal = [];
+var hourOfDay = moment().format("HH A");
+var hourOfDayNumbers = hourOfDay.replace(/\D/g, '');
+var hourOfDayNumbersConverted = parseInt(hourOfDayNumbers, 10);
+// console.log(hourOfDayNumbersConverted);
+hourOfDayFinal.push(hourOfDayNumbersConverted);
+
+
+console.log(hourAreaFinal);
+
+console.log(hourOfDayFinal);
+
+$(".col-8").each(function (i) {
+    // Test if the div element is empty
+    if (hourAreaFinal[i] > hourOfDayFinal[0]) {
+        $(this).addClass('future');
+    } else if (hourAreaFinal[i] < hourOfDayFinal[0]) {
+        $(this).addClass('past');
+    } else {
+        $(this).addClass('present');
+    }
+});
 
 function showDateTime() {
     var today = moment().format("MM DD YYYY hh:mm:ss");
     var currentDay = $('#currentDay');
-    console.log(today);
-
     currentDay.text(today);
 }
-
 
 saveButtonArea.on('click', function () {
 
@@ -60,42 +75,42 @@ saveButtonArea.on('click', function () {
             scheduleArray.splice(0, 1, textAreaValues)
             localStorage.setItem("scheduleArray1", scheduleArray[0])
         } else if (this.getAttribute('data-sb') == 2) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(1, 1, textAreaValues)
             localStorage.setItem("scheduleArray2", scheduleArray[1])
         } else if (this.getAttribute('data-sb') == 3) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(2, 1, textAreaValues)
             localStorage.setItem("scheduleArray3", scheduleArray[2])
         } else if (this.getAttribute('data-sb') == 4) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(3, 1, textAreaValues)
             localStorage.setItem("scheduleArray4", scheduleArray[3])
         } else if (this.getAttribute('data-sb') == 5) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(4, 1, textAreaValues)
             localStorage.setItem("scheduleArray5", scheduleArray[4])
         } else if (this.getAttribute('data-sb') == 6) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(5, 1, textAreaValues)
             localStorage.setItem("scheduleArray6", scheduleArray[5])
         } else if (this.getAttribute('data-sb') == 7) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(6, 1, textAreaValues)
             localStorage.setItem("scheduleArray7", scheduleArray[6])
         } else if (this.getAttribute('data-sb') == 8) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(7, 1, textAreaValues)
             localStorage.setItem("scheduleArray8", scheduleArray[7])
         } else if (this.getAttribute('data-sb') == 9) {
-            
+
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(8, 1, textAreaValues)
             localStorage.setItem("scheduleArray9", scheduleArray[8])
@@ -103,6 +118,7 @@ saveButtonArea.on('click', function () {
             alert("empty textbox");
         }
     }
+    console.log(scheduleArray);
 });
 
 
