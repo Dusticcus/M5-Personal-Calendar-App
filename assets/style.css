@@ -88,13 +88,22 @@ textarea:focus {
   overflow: none;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 10px 20px 30px #034b5b inset;
 }
 
 .textAreaOverride {
   overflow: auto;
   padding-bottom: 0;
+}
+
+#eventSaved {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 

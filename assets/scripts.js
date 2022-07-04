@@ -1,4 +1,10 @@
 var scheduleArray = new Array(8);
+$('#eventSaved').hide();
+
+
+
+
+
 
 function getscheduleArray() {
     var scheduledEvent1 = localStorage.getItem("scheduleArray1");
@@ -62,20 +68,55 @@ $(".col-8").each(function (i) {
 });
 
 function showDateTime() {
-    var today = moment().format("MM DD YYYY hh:mm:ss");
+    var today = moment().format("dddd, MMMM Do YYYY| h:mm:ss A");
     var currentDay = $('#currentDay');
     currentDay.text(today);
 }
 
+function successfulSave() {
+    var timeSpace = 3;
+    var myTimer = setInterval(eventSavedTimer, 1000);
+
+    function eventSavedTimer() {
+        $('#eventSaved').show();
+        timeSpace--;
+        if (timeSpace == 0) {
+            stopTimer();
+            $('#eventSaved').hide();
+        }
+        function stopTimer() {
+            clearInterval(myTimer)
+            // timeSpace = 3;
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
 saveButtonArea.on('click', function () {
 
     if (this.previousSibling.previousSibling.children.item(0).value !== '') {
+
+
+
+
+
+
+
+
+
+
         if (this.getAttribute('data-sb') == 1) {
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(0, 1, textAreaValues)
             localStorage.setItem("scheduleArray1", scheduleArray[0])
         } else if (this.getAttribute('data-sb') == 2) {
-
             var textAreaValues = this.previousSibling.previousSibling.children.item(0).value;
             scheduleArray.splice(1, 1, textAreaValues)
             localStorage.setItem("scheduleArray2", scheduleArray[1])
@@ -118,6 +159,7 @@ saveButtonArea.on('click', function () {
             alert("empty textbox");
         }
     }
+    successfulSave();
     console.log(scheduleArray);
 });
 
