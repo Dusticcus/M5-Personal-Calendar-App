@@ -1,4 +1,7 @@
 # M5-Personal-Calendar-App
+
+[Click here to view the live version hosted on GitHub Pages:](https://dusticcus.github.io/M5-Personal-Calendar-App)
+
 ## Purpose:
 A learning experience designed to help understand utilization of local storage, JQuery, and the Bootstrap framework.
 
@@ -10,7 +13,8 @@ A learning experience designed to help understand utilization of local storage, 
 - JQuery
 - JSON
 
-# Landing Page
+# General Use
+## Landing Page
 Once on the page, you are present with a timeslot for each working hour of the day (9AM - 5PM) that are colored coded to convey past, present, and future timeslots.
 - <img src="./assets/images/readmeImages/landingPage.png" style="width:500px">
 
